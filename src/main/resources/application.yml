@@ -1,0 +1,12 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    mode: HTML5
+  security:
+    user:
+      name: admin
+      password: 123456
