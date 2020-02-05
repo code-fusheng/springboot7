@@ -242,7 +242,84 @@ public class SecurityHandler {
     }
 }
 ```
-* 10、启动 Application,访问 http://localhost:8080/index  直接跳转到登陆页面，如果登陆 User 用户就不能在请求 admin 页面，如果登陆 Admin 角色用户 则可以继续请求 admin 页面。
+* 10、创建修改前端 HTML   
+
+index.html
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Welcome Back</p>
+    <from method="post" action="/logout">
+        <input type="submit" value="退出"/>
+    </from>
+</body>
+</html>
+```
+
+login.html
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:if="${param.error}">
+        username or password error !!!
+    </p>
+    <form th:action="@{/login}" method="post">
+        <table>
+            <tr>
+                <td>用户名：</td>
+                <td>
+                    <input type="text" name="username"/>
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input type="password" name="password"/>
+                </td>
+            </tr>
+            <tr>
+                <td>用户名：</td>
+                <td>
+                    <input type="submit" value="Login"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+```
+
+admin.html
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Admin Management System</p>
+    <a href="">学生管理</a>
+    <a href="">教师管理</a>
+    <a href="">成绩管理</a>
+    <form action="/logout" method="post">
+        <button type="submit">退出</button>
+    </form>
+</body>
+</html>
+```
+
+* 11、启动 Application,访问 http://localhost:8080/index  直接跳转到登陆页面，如果登陆 User 用户就不能在请求 admin 页面，如果登陆 Admin 角色用户 则可以继续请求 admin 页面。
 
 
 
